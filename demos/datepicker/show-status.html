@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>jQuery UI Datepicker - Populate alternate field</title>
+	<title>jQuery UI Datepicker - Show Status</title>
 	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.ext.js"></script>
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
 	$(function() {
 		$("#datepicker").datepicker({
-			altField: "#alternate",
-			altFormat: "DD, d MM, yyyy"
+			onShow: $.ui.datepicker.showStatus
 		});
 	});
 	</script>
@@ -22,16 +22,16 @@
 
 <div class="demo">
 
-<p>Date: <input type="text" id="datepicker">&nbsp;<input type="text" id="alternate" size="30"/></p>
+<p>Date: <input type="text" id="datepicker"></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Populate an alternate field with its own date format whenever a date is selected using the
-	<code>altField</code> and <code>altFormat</code> options.  This feature could be used to
-	present a human-friendly date for user selection, while passing a more computer-friendly
-	date through for further processing.</p>
+<p>Instead of displaying popup tooltips within the datepicker, add a status bar at the bottom
+	and show the tips there. Add this functionality by setting the <code>onShow</code> callback
+	to the built-in <code>showStatus</code> function - available in the
+	<code>jquery.ui.datepicker.ext.js</code> module.</p>
 
 </div><!-- End demo-description -->
 

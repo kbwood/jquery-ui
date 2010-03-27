@@ -1,11 +1,8 @@
 ﻿/* Azerbaijani (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Jamil Najafov (necefov33@gmail.com). */
-jQuery(function($) {
-	$.datepicker.regional['az'] = {
-		closeText: 'Bağla',
-		prevText: '&#x3c;Geri',
-		nextText: 'İrəli&#x3e;',
-		currentText: 'Bugün',
+(function($) {
+	$.ui.datepicker.regional['az'] = {
+		renderer: $.ui.datepicker.defaultRenderer,
 		monthNames: ['Yanvar','Fevral','Mart','Aprel','May','İyun',
 		'İyul','Avqust','Sentyabr','Oktyabr','Noyabr','Dekabr'],
 		monthNamesShort: ['Yan','Fev','Mar','Apr','May','İyun',
@@ -13,11 +10,21 @@ jQuery(function($) {
 		dayNames: ['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə'],
 		dayNamesShort: ['B','Be','Ça','Ç','Ca','C','Ş'],
 		dayNamesMin: ['B','B','Ç','С','Ç','C','Ş'],
-		weekHeader: 'Hf',
-		dateFormat: 'dd.mm.yy',
+		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['az']);
-});
+		prevText: '&#x3c;Geri', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'İrəli&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Bugün', currentStatus: '',
+		todayText: 'Bugün', todayStatus: '',
+		clearText: '-', clearStatus: '',
+		closeText: 'Bağla', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Hf', weekStatus: '',
+		dayStatus: 'DD d MM',
+		defaultStatus: '',
+		isRTL: false
+	};
+	$.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['az']);
+})(jQuery);

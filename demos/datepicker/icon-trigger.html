@@ -10,12 +10,27 @@
 	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
+	var triggers = ["<button type=\"button\">...</button>",
+		"<img src=\"images/calendar.gif\" alt=\"...\">"];
+
 	$(function() {
 		$("#datepicker").datepicker({
-			showOn: 'button',
-			buttonImage: 'images/calendar.gif',
-			buttonImageOnly: true
+			showTrigger: triggers[0]
 		});
+		$("#trigger").change(function() {
+			$("#datepicker").datepicker("option", "showTrigger", triggers[$(this).val()]);
+		});
+		$("#focus").click(function() {
+			$("#datepicker").datepicker("option", "showOnFocus", $(this).is(":checked"));
+		});
+		$("#disable").toggle(function() {
+				$(this).text("Enable");
+				$("#datepicker").datepicker("disable"); 
+			},
+			function() {
+				$(this).text("Disable");
+				$("#datepicker").datepicker("enable"); 
+			});
 	});
 	</script>
 </head>
@@ -23,13 +38,20 @@
 
 <div class="demo">
 
-<p>Date: <input type="text" id="datepicker"></p>
+<p>Trigger: <select id="trigger"><option value="0">Button</option>
+	<option value="1">Icon</option></select>
+	<label>and focus <input type="checkbox" id="focus" checked></label></p>
+	
+<p>Date: <input type="text" id="datepicker">
+	<button type="button" id="disable">Disable</button></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Click the icon next to the input field to show the datepicker.  Set the datepicker to open on focus (default behavior), on icon click, or both.</p>
+<p>Click the trigger next to the input field to show the datepicker.  Set the datepicker to
+	open on focus (default behavior, <code>showOnFocus</code> option),
+	and/or provide a trigger element (<code>showTrigger</code>).</p>
 
 </div><!-- End demo-description -->
 

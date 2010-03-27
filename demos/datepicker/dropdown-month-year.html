@@ -11,9 +11,11 @@
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
 	$(function() {
-		$('#datepicker').datepicker({
-			changeMonth: true,
-			changeYear: true
+		$("#datepicker").datepicker({
+			changeMonth: true
+		});
+		$("#yearRange").change(function() {
+			$("#datepicker").datepicker("option", "yearRange", $(this).val());
 		});
 	});
 	</script>
@@ -22,13 +24,25 @@
 
 <div class="demo">
 
+<p>Year range: <select id="yearRange">
+	<option value="c-10:c+10">Relative to selected date - "c-10:c+10"</option>
+	<option value="-8:+8">Relative to today's date - "-8:+8"</option>
+	<option value="1990:2010">Absolute years - "1990:2010"</option>
+	<option value="1990:-5">Combination - "1990:-5"</option>
+	<option value="any">Any year - "any"</option></select></p>
+	
 <p>Date: <input type="text" id="datepicker"></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Show month and year dropdowns in place of the static month/year header to facilitate navigation through large timeframes.  Add the boolean <code>changeMonth</code> and <code>changeYear</code> options.</p>
+<p>Show month and year dropdowns in place of the static month/year header to facilitate
+	navigation through large timeframes by adding the boolean <code>changeMonth</code> option.
+	Control which years are shown in the year drop-down via the <code>yearRange</code> option.
+	Note that this option only restricts what appears within the drop-down. You must use
+	the <code>minDate</code> and <code>maxDate</code> options to impose limits on the
+	actual dates that may be selected.</p>
 
 </div><!-- End demo-description -->
 

@@ -12,7 +12,9 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#datepicker").datepicker();
-		$("#format").change(function() { $('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
+		$("#format").change(function() {
+			$("#datepicker").datepicker("option", "dateFormat", $(this).val());
+		});
 	});
 	</script>
 </head>
@@ -20,24 +22,25 @@
 
 <div class="demo">
 
-<p>Date: <input type="text" id="datepicker" size="30"/></p>
-
 <p>Format options:<br />
 	<select id="format">
-		<option value="mm/dd/yy">Default - mm/dd/yy</option>
-		<option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
-		<option value="d M, y">Short - d M, y</option>
-		<option value="d MM, y">Medium - d MM, y</option>
-		<option value="DD, d MM, yy">Full - DD, d MM, yy</option>
-		<option value="'day' d 'of' MM 'in the year' yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+		<option value="mm/dd/yyyy">Default - mm/dd/yyyy</option>
+		<option value="yyyy-mm-dd">ISO 8601 - yyyy-mm-dd</option>
+		<option value="d M, yy">Short - d M, yy</option>
+		<option value="d MM, yy">Medium - d MM, yy</option>
+		<option value="DD, d MM, yyyy">Full - DD, d MM, yyyy</option>
+		<option value="'day' d 'of' MM 'in the year' yyyy">With text - 'day' d 'of' MM 'in the year' yyyy</option>
 	</select>
 </p>
+
+<p>Date: <input type="text" id="datepicker" size="30"/></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Display date feedback in a variety of ways.  Choose a date format from the dropdown, then click on the input and select a date to see it in that format.</p>
+<p>Display date feedback in a variety of ways.  Choose a date format from the dropdown,
+	then click on the input and select a date to see it in that format.</p>
 
 </div><!-- End demo-description -->
 

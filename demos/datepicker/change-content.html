@@ -2,36 +2,42 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>jQuery UI Datepicker - Populate alternate field</title>
+	<title>jQuery UI Datepicker - Change Day Content</title>
 	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<style type="text/css">
+	.showDoY sub { font-size: 85%; }
+	</style>
 	<script type="text/javascript">
 	$(function() {
 		$("#datepicker").datepicker({
-			altField: "#alternate",
-			altFormat: "DD, d MM, yyyy"
+			onDate: showDayOfYear
 		});
 	});
+
+	function showDayOfYear(date) {
+	    return {content: date.getDate() + '<br><sub>' + $.ui.datepicker.dayOfYear(date) + '</sub>',
+			dateClass: 'showDoY'};
+	}
 	</script>
 </head>
 <body>
 
 <div class="demo">
 
-<p>Date: <input type="text" id="datepicker">&nbsp;<input type="text" id="alternate" size="30"/></p>
+<p>Date: <input type="text" id="datepicker"></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Populate an alternate field with its own date format whenever a date is selected using the
-	<code>altField</code> and <code>altFormat</code> options.  This feature could be used to
-	present a human-friendly date for user selection, while passing a more computer-friendly
-	date through for further processing.</p>
+<p>Change the content of an individual date via the <code>onDate</code> callback.
+	Return an object for each date with <code>content</code> set.
+	In this case it includes the day of the year.</p>
 
 </div><!-- End demo-description -->
 

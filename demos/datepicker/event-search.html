@@ -11,14 +11,12 @@
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
 	$(function() {
-		var dates = $('#from, #to').datepicker({
+		var dates = $("#from, #to").datepicker({
 			defaultDate: "+1w",
 			changeMonth: true,
-			numberOfMonths: 3,
-			onSelect: function(selectedDate) {
+			monthsToShow: 3,
+			select: function(event, date) {
 				var option = this.id == "from" ? "minDate" : "maxDate";
-				var instance = $(this).data("datepicker");
-				var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				dates.not(this).datepicker("option", option, date);
 			}
 		});
@@ -38,7 +36,8 @@
 
 <div class="demo-description">
 
-<p>Select the date range to search for.</p>
+<p>Select the date range to search for. The <code>select</code> callback updates the
+	other datepicker to enforce date range restrictions.</p>
 
 </div><!-- End demo-description -->
 

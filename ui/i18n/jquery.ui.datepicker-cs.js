@@ -1,11 +1,8 @@
 ﻿/* Czech initialisation for the jQuery UI date picker plugin. */
 /* Written by Tomas Muller (tomas@tomas-muller.net). */
-jQuery(function($){
-	$.datepicker.regional['cs'] = {
-		closeText: 'Zavřít',
-		prevText: '&#x3c;Dříve',
-		nextText: 'Později&#x3e;',
-		currentText: 'Nyní',
+(function($) {
+	$.ui.datepicker.regional['cs'] = {
+		renderer: $.ui.datepicker.defaultRenderer,
 		monthNames: ['leden','únor','březen','duben','květen','červen',
         'červenec','srpen','září','říjen','listopad','prosinec'],
 		monthNamesShort: ['led','úno','bře','dub','kvě','čer',
@@ -13,11 +10,21 @@ jQuery(function($){
 		dayNames: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'],
 		dayNamesShort: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
 		dayNamesMin: ['ne','po','út','st','čt','pá','so'],
-		weekHeader: 'Týd',
-		dateFormat: 'dd.mm.yy',
+		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['cs']);
-});
+		prevText: '&#x3c;Dříve', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Později&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Nyní', currentStatus: '',
+		todayText: 'Nyní', todayStatus: '',
+		clearText: '-', clearStatus: '',
+		closeText: 'Zavřít', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Týd', weekStatus: '',
+		dayStatus: 'DD d MM',
+		defaultStatus: '',
+		isRTL: false
+	};
+	$.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['cs']);
+})(jQuery);

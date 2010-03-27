@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>jQuery UI Datepicker - Populate alternate field</title>
+	<title>jQuery UI Datepicker - Hover Over Day</title>
 	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.ext.js"></script>
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
 	$(function() {
 		$("#datepicker").datepicker({
-			altField: "#alternate",
-			altFormat: "DD, d MM, yyyy"
+			onShow: $.ui.datepicker.hoverCallback(function(date, selectable) {
+					$("#hoverDate").text(!selectable ? "nothing" :
+						$.ui.datepicker.formatDate("D d M yyyy", date));
+				})
 		});
 	});
 	</script>
@@ -22,16 +25,16 @@
 
 <div class="demo">
 
-<p>Date: <input type="text" id="datepicker">&nbsp;<input type="text" id="alternate" size="30"/></p>
+<p>Date: <input type="text" id="datepicker">
+	You're looking at <span id="hoverDate">nothing</span>.</p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Populate an alternate field with its own date format whenever a date is selected using the
-	<code>altField</code> and <code>altFormat</code> options.  This feature could be used to
-	present a human-friendly date for user selection, while passing a more computer-friendly
-	date through for further processing.</p>
+<p>Extend the datepicker to send callbacks when hovering over a date by wrapping your function
+	in the built-in <code>hoverCallback</code> and assigning it to the <code>onShow</code> option -
+	available in the <code>jquery.ui.datepicker.ext.js</code> module.</p>
 
 </div><!-- End demo-description -->
 

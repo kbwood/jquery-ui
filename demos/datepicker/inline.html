@@ -9,9 +9,21 @@
 	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<style type="text/css">
+	#datepicker { display: inline-block; }
+	.normal .ui-widget-content a { color: #222; }
+	</style>
 	<script type="text/javascript">
 	$(function() {
 		$("#datepicker").datepicker();
+		$("#disable").toggle(function() {
+				$(this).text("Enable");
+				$("#datepicker").datepicker("disable"); 
+			},
+			function() {
+				$(this).text("Disable");
+				$("#datepicker").datepicker("enable"); 
+			});
 	});
 	</script>
 </head>
@@ -19,13 +31,15 @@
 
 <div class="demo">
 
-Date: <div id="datepicker"></div>
+<p>Date: <span id="datepicker"></span>
+	<button type="button" id="disable">Disable</button></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Display the datepicker embedded in the page instead of in an overlay.  Simply call .datepicker() on a div instead of an input.</p>
+<p>Display the datepicker embedded in the page instead of in an overlay.
+	Simply call <code>.datepicker()</code> on a div or a span instead of an input.</p>
 
 </div><!-- End demo-description -->
 

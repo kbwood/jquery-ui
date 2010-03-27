@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery UI Datepicker - Default Date</title>
+	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<link type="text/css" href="../../themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
+	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<script type="text/javascript">
+	var dates = [null, -10, "+1M -1D", new Date(2010, 1-1, 1)];
+	
+	$(function() {
+		$("#datepicker").datepicker({
+			defaultDate: -10
+		});
+		$("#default").change(function() {
+			$("#datepicker").datepicker("option", {
+				defaultDate: dates[$(this).val()]});
+		});
+	});
+	</script>
+</head>
+<body>
+
+<div class="demo">
+
+<p>Default date: <select id="default">
+	<option value="0">Today - null</option>
+	<option value="1" selected>Ten days ago - -10</option>
+	<option value="2">One month less one day ahead - "+1M -1D"</option>
+	<option value="3">Absolute date - new Date(2010, 1-1, 1)</option>
+	</select></p>
+	
+<p>Date: <input type="text" id="datepicker"></p>
+
+</div><!-- End demo -->
+
+<div class="demo-description">
+
+<p>Set an initial date to display when no other date has been selected with the
+	<code>defaultDate</code> option.  Set this as an actual date (new Date(2010, 1 - 1, 1)),
+	as a numeric offset from today (-20), or as a string of periods and units ('+1M +10D')
+	offset from today.  For the last, use 'D' for days, 'W' for weeks, 'M' for months,
+	or 'Y' for years.  The default is to display today.</p>
+
+</div><!-- End demo-description -->
+
+</body>
+</html>

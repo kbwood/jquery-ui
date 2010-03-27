@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>jQuery UI Datepicker - Populate alternate field</title>
+	<title>jQuery UI Datepicker - Event Callbacks</title>
 	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
 	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
@@ -12,8 +12,9 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#datepicker").datepicker({
-			altField: "#alternate",
-			altFormat: "DD, d MM, yyyy"
+			changeMonthYear: function(event, date) { alert("Changed to " + (date.getMonth() + 1) + "/" + date.getFullYear()); },
+			select: function(event, date) { alert("Selected " + date); },
+			close: function(event, date) { alert("Closed " + (date.getTime ? date : "")); }
 		});
 	});
 	</script>
@@ -22,16 +23,15 @@
 
 <div class="demo">
 
-<p>Date: <input type="text" id="datepicker">&nbsp;<input type="text" id="alternate" size="30"/></p>
+<p>Date: <input type="text" id="datepicker"></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Populate an alternate field with its own date format whenever a date is selected using the
-	<code>altField</code> and <code>altFormat</code> options.  This feature could be used to
-	present a human-friendly date for user selection, while passing a more computer-friendly
-	date through for further processing.</p>
+<p>React to events within the datepicker such as when a new month is shown (<code>changeMonthYear</code>),
+	when a date is selected (<code>select</code>), or when the popup is closed (<code>close</code>). 
+	Alternately, you can <code>bind</code> to these events by prefixing their name with 'datepicker'.</p>
 
 </div><!-- End demo-description -->
 

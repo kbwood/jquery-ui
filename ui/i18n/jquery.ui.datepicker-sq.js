@@ -1,11 +1,8 @@
 ﻿/* Albanian initialisation for the jQuery UI date picker plugin. */
 /* Written by Flakron Bytyqi (flakron@gmail.com). */
-jQuery(function($){
-	$.datepicker.regional['sq'] = {
-		closeText: 'mbylle',
-		prevText: '&#x3c;mbrapa',
-		nextText: 'Përpara&#x3e;',
-		currentText: 'sot',
+(function($) {
+	$.ui.datepicker.regional['sq'] = {
+		renderer: $.ui.datepicker.defaultRenderer,
 		monthNames: ['Janar','Shkurt','Mars','Prill','Maj','Qershor',
 		'Korrik','Gusht','Shtator','Tetor','Nëntor','Dhjetor'],
 		monthNamesShort: ['Jan','Shk','Mar','Pri','Maj','Qer',
@@ -13,11 +10,21 @@ jQuery(function($){
 		dayNames: ['E Diel','E Hënë','E Martë','E Mërkurë','E Enjte','E Premte','E Shtune'],
 		dayNamesShort: ['Di','Hë','Ma','Më','En','Pr','Sh'],
 		dayNamesMin: ['Di','Hë','Ma','Më','En','Pr','Sh'],
-		weekHeader: 'Ja',
-		dateFormat: 'dd.mm.yy',
+		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['sq']);
-});
+		prevText: '&#x3c;mbrapa', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Përpara&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'sot', currentStatus: '',
+		todayText: 'sot', todayStatus: '',
+		clearText: '-', clearStatus: '',
+		closeText: 'mbylle', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Ja', weekStatus: '',
+		dayStatus: 'DD d MM',
+		defaultStatus: '',
+		isRTL: false
+	};
+	$.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['sq']);
+})(jQuery);

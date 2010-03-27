@@ -1,11 +1,8 @@
 ﻿/* Afrikaans initialisation for the jQuery UI date picker plugin. */
 /* Written by Renier Pretorius. */
-jQuery(function($){
-	$.datepicker.regional['af'] = {
-		closeText: 'Selekteer',
-		prevText: 'Vorige',
-		nextText: 'Volgende',
-		currentText: 'Vandag',
+(function($) {
+	$.ui.datepicker.regional['af'] = {
+		renderer: $.ui.datepicker.defaultRenderer,
 		monthNames: ['Januarie','Februarie','Maart','April','Mei','Junie',
 		'Julie','Augustus','September','Oktober','November','Desember'],
 		monthNamesShort: ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun',
@@ -13,11 +10,21 @@ jQuery(function($){
 		dayNames: ['Sondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrydag', 'Saterdag'],
 		dayNamesShort: ['Son', 'Maa', 'Din', 'Woe', 'Don', 'Vry', 'Sat'],
 		dayNamesMin: ['So','Ma','Di','Wo','Do','Vr','Sa'],
-		weekHeader: 'Wk',
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['af']);
-});
+		prevText: 'Vorige', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Volgende', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Vandag', currentStatus: '',
+		todayText: 'Vandag', todayStatus: '',
+		clearText: '-', clearStatus: '',
+		closeText: 'Selekteer', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Wk', weekStatus: '',
+		dayStatus: 'DD d MM',
+		defaultStatus: '',
+		isRTL: false
+	};
+	$.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['af']);
+})(jQuery);

@@ -1,11 +1,8 @@
 ﻿/* English/UK initialisation for the jQuery UI date picker plugin. */
 /* Written by Stuart. */
-jQuery(function($){
-	$.datepicker.regional['en-GB'] = {
-		closeText: 'Done',
-		prevText: 'Prev',
-		nextText: 'Next',
-		currentText: 'Today',
+(function($) {
+	$.ui.datepicker.regional['en-GB'] = {
+		renderer: $.ui.datepicker.defaultRenderer,
 		monthNames: ['January','February','March','April','May','June',
 		'July','August','September','October','November','December'],
 		monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -13,11 +10,21 @@ jQuery(function($){
 		dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
-		weekHeader: 'Wk',
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['en-GB']);
-});
+		prevText: '&#x3c;Prev', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Next&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Current', currentStatus: '',
+		todayText: 'Today', todayStatus: '',
+		clearText: 'Clear', clearStatus: '',
+		closeText: 'Done', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Wk', weekStatus: '',
+		dayStatus: 'DD d MM',
+		defaultStatus: '',
+		isRTL: false
+	};
+	$.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['en-GB']);
+})(jQuery);

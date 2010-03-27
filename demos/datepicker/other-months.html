@@ -11,7 +11,15 @@
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
 	$(function() {
-		$("#datepicker").datepicker({showOtherMonths: true, selectOtherMonths: true});
+		$("#datepicker").datepicker({
+			showOtherMonths: true
+		});
+		$("#show,#select").click(function() {
+			$("#datepicker").datepicker("option", {
+				showOtherMonths: $("#show").is(":checked"),
+				selectOtherMonths: $("#select").is(":checked")
+			});
+		});
 	});
 	</script>
 </head>
@@ -19,6 +27,8 @@
 
 <div class="demo">
 
+<p><label>Show: <input type="checkbox" id="show" checked/></label>
+	<label>Select: <input type="checkbox" id="select"/></label></p>
 <p>Date: <input type="text" id="datepicker"></p>
 
 </div><!-- End demo -->
@@ -26,7 +36,8 @@
 <div class="demo-description">
 
 <p>The datepicker can show dates that come from other than the main month
-	being displayed. These other dates can also be made selectable.</p>
+	being displayed (<code>showOtherMonths</code>). These other dates can
+	also be made selectable (<code>selectOtherMonths</code>).</p>
 
 </div><!-- End demo-description -->
 

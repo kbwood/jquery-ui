@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery UI Datepicker - Popup Alignment</title>
+	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.position.js"></script>
+	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<style type="text/css">
+	#datepicker { margin: 6em 0em 0em 8em; }
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker();
+		$("#my,#at").change(function() {
+			$("#datepicker").datepicker("option",
+				{myPosition: $("#my").val(), atPosition: $("#at").val()});
+		});
+	});
+	</script>
+</head>
+<body>
+
+<div class="demo">
+
+<p>My position: <select id="my"><option value="left top">left top</option>
+	<option value="center top">center top</option>
+	<option value="right top">right top</option>
+	<option value="left center">left center</option>
+	<option value="center center">center center</option>
+	<option value="right center">right center</option>
+	<option value="left bottom">left bottom</option>
+	<option value="center bottom">center bottom</option>
+	<option value="right bottom">right bottom</option></select></p>
+<p>At position: <select id="at"><option value="left top">left top</option>
+	<option value="center top">center top</option>
+	<option value="right top">right top</option>
+	<option value="left center">left center</option>
+	<option value="center center">center center</option>
+	<option value="right center">right center</option>
+	<option value="left bottom" selected>left bottom</option>
+	<option value="center bottom">center bottom</option>
+	<option value="right bottom">right bottom</option></select></p>
+<p>Date: <input type="text" id="datepicker"></p>
+
+</div><!-- End demo -->
+
+<div class="demo-description">
+
+<p>Control the positioning of a popup datepicker via the <code>myPosition</code> and
+	<code>atPosition</code> options, which tie into the Position plugin.
+	The default is "left top" to "left bottom" (or both right if a right-to-left language).</p>
+
+</div><!-- End demo-description -->
+
+</body>
+</html>

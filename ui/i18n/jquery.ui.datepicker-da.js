@@ -1,11 +1,8 @@
 ﻿/* Danish initialisation for the jQuery UI date picker plugin. */
 /* Written by Jan Christensen ( deletestuff@gmail.com). */
-jQuery(function($){
-    $.datepicker.regional['da'] = {
-		closeText: 'Luk',
-        prevText: '&#x3c;Forrige',
-		nextText: 'Næste&#x3e;',
-		currentText: 'Idag',
+(function($) {
+    $.ui.datepicker.regional['da'] = {
+		renderer: $.ui.datepicker.defaultRenderer,
         monthNames: ['Januar','Februar','Marts','April','Maj','Juni',
         'Juli','August','September','Oktober','November','December'],
         monthNamesShort: ['Jan','Feb','Mar','Apr','Maj','Jun',
@@ -13,11 +10,21 @@ jQuery(function($){
 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
 		dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
-		weekHeader: 'Uge',
-        dateFormat: 'dd-mm-yy',
+        dateFormat: 'dd-mm-yyyy',
 		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''};
-    $.datepicker.setDefaults($.datepicker.regional['da']);
-});
+		prevText: '&#x3c;Forrige', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Næste&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Idag', currentStatus: '',
+		todayText: 'Idag', todayStatus: '',
+		clearText: '-', clearStatus: '',
+		closeText: 'Luk', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Uge', weekStatus: '',
+		dayStatus: 'DD d MM',
+		defaultStatus: '',
+		isRTL: false
+	};
+    $.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['da']);
+})(jQuery);

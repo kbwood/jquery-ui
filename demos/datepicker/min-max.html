@@ -10,8 +10,19 @@
 	<script type="text/javascript" src="../../ui/jquery.ui.datepicker.js"></script>
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
+	var minDates = [null, 0, -10, "-1M +1D", new Date(2009, 1-1, 26)];
+	var maxDates = [null, 0, +10, "+3W +2D", new Date(2011, 1-1, 26)];
+	
 	$(function() {
-		$("#datepicker").datepicker({minDate: -20, maxDate: '+1M +10D'});
+		$("#datepicker").datepicker({
+			minDate: -10,
+			maxDate: +10
+		});
+		$("#min,#max").change(function() {
+			$("#datepicker").datepicker("option", {
+				minDate: minDates[$("#min").val()],
+				maxDate: maxDates[$("#max").val()]});
+		});
 	});
 	</script>
 </head>
@@ -19,13 +30,33 @@
 
 <div class="demo">
 
+<p>Minimum date: <select id="min">
+	<option value="0">None - null</option>
+	<option value="1">Today - 0</option>
+	<option value="2" selected>Ten days ago - -10</option>
+	<option value="3">One month less one day ago - "-1M +1D"</option>
+	<option value="4">Absolute date - new Date(2009, 1-1, 26)</option>
+	</select></p>
+
+<p>Maximum date: <select id="max">
+	<option value="0">None - null</option>
+	<option value="1">Today - 0</option>
+	<option value="2" selected>Ten days ahead - +10</option>
+	<option value="3">Three weeks two days ahead - "+3W +2D"</option>
+	<option value="4">Absolute date - new Date(2011, 1-1, 26)</option>
+	</select></p>
+	
 <p>Date: <input type="text" id="datepicker"></p>
 
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Restrict the range of selectable dates with the <code>minDate</code> and <code>maxDate</code> options.  Set the beginning and end dates as actual dates (new Date(2009, 1 - 1, 26)), as a numeric offset from today (-20), or as a string of periods and units ('+1M +10D').  For the last, use 'D' for days, 'W' for weeks, 'M' for months, or 'Y' for years.</p>
+<p>Restrict the range of selectable dates with the <code>minDate</code> and <code>maxDate</code>
+	options.  Set the beginning and end dates as actual dates (new Date(2009, 1 - 1, 26)),
+	as a numeric offset from today (-20), or as a string of periods and units ('+1M +10D')
+	offset from today.  For the last, use 'D' for days, 'W' for weeks, 'M' for months,
+	or 'Y' for years.</p>
 
 </div><!-- End demo-description -->
 

@@ -63,10 +63,10 @@
 	<link type="text/css" href="../demos.css" rel="stylesheet" />
 	<script type="text/javascript">
 	$(function() {
-		$.datepicker.setDefaults($.datepicker.regional['']);
-		$("#datepicker").datepicker($.datepicker.regional['fr']);
+		$.extend($.ui.datepicker.defaults, $.ui.datepicker.regional[""]);
+		$("#datepicker").datepicker($.extend({changeMonth: true}, $.ui.datepicker.regional["fr"]));
 		$("#locale").change(function() {
-			$('#datepicker').datepicker('option', $.datepicker.regional[$(this).val()]);
+			$("#datepicker").datepicker("option", $.ui.datepicker.regional[$(this).val()]);
 		});
 	});
 	</script>
@@ -75,8 +75,7 @@
 
 <div class="demo">
 	
-<p>Date: <input type="text" id="datepicker"/>&nbsp;
-	<select id="locale">
+<p>Language: <select id="locale">
 		<option value="af">Afrikaans</option>
 		<option value="sq">Albanian (Gjuha shqipe)</option>
 		<option value="ar">Arabic (&#8235;(&#1604;&#1593;&#1585;&#1576;&#1610;</option>
@@ -131,11 +130,15 @@
 		<option value="vi">Vietnamese (Ti&#7871;ng Vi&#7879;t)</option>
 	</select></p>
 
+<p>Date: <input type="text" id="datepicker"/></p>
+
 </div><!-- End demo -->
 
 <div class="demo-description">
 
-<p>Localize the datepicker calendar language and format (English / Western formatting is the default).  The datepicker includes built-in support for languages that read right-to-left, such as Arabic and Hebrew.</p>
+<p>Localize the datepicker calendar language and format (English / Western formatting
+	is the default).  The datepicker includes built-in support for languages that read
+	right-to-left, such as Arabic and Hebrew.</p>
 
 </div><!-- End demo-description -->
 
